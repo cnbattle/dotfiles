@@ -8,22 +8,30 @@ golang_path="go$golang_version"
 
 golang_file_name="go$golang_version.linux-amd64.tar.gz"
 
-// file is not exist
-if [ ! -f $golang_file_name ];then
+# file is not exist
+if [ ! -f "$HOME/$golang_file_name" ];then
 	golang_down_url="https://dl.google.com/go/$golang_file_name"
 	wget $golang_down_url
 fi
 
-tar -xzvf $golang_file_name -C /usr/local/
+# file path is not exist
+if [ ! -d "/usr/local/go" ];then
+	tar -xzvf $golang_file_name -C /usr/local/
+else
+	echo "installed!"
+	exit 1
+fi
 
-goroot="export GOROOT=/usr/local/go"
-gobin="export GOBIN=$goroot/bin"
-path="export PATH=$PATH:$gobin"
-gopath="export GOPATH=$HOME/goPath"
+goroot="/usr/local/go"
+gobin="$goroot/bin"
+path="$PATH:$gobin"
+gopath="$HOME/goPath"
 
-echo ${goroot} >> $HOME/.profile
-echo ${gobin} >>  $HOME/.profile
-echo ${path} >>  $HOME/.profile
-echo ${gopath} >>  $HOME/.profile
+echo "export GOROOT=${goroot}" >> /etc/profile
+echo "export GOBIN=${gobin}" >>  /etc/profile
+echo "export PATH=${path}" >>  /etc/profile
+echo "export GOPATH=${gopath}" >>  /etc/profile
 
-source $HOME/.profile
+source /etc/profile
+
+echo "End of execution...."
