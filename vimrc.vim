@@ -51,7 +51,7 @@ endif
 " set t_ti= t_te=
 
 " 设置在Vim中可以使用鼠标，防止终端无法拷贝  
-set mouse=a  
+“ set mouse=a  
 
 "==========================================
 " Display Settings
