@@ -1,6 +1,10 @@
 # Antigen: https://github.com/zsh-users/antigen
 ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
+# Alias
+
+alias lsa='ls -a'
+
 # Install antigen.zsh if not exist
 if [ ! -f "$ANTIGEN" ]; then
 	echo "Installing antigen ..."
