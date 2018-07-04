@@ -8,7 +8,6 @@ alias vim="vim"
 alias nano="vim"
 
 alias ll='ls -a'
-alias rm='rmtrash'
 
 alias cd=' cd'
 alias ..=' cd ..; ls'
