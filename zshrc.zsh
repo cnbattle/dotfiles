@@ -2,8 +2,21 @@
 ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
 # Alias
+export EDITOR="vim"
+alias vi="vim"
+alias vim="vim"
+alias nano="vim"
 
-alias lsa='ls -a'
+alias ll='ls -a'
+alias rm="echo Use 'rmtrash', or the full path i.e. '/bin/rm'"
+
+alias cd=' cd'
+alias ..=' cd ..; ls'
+alias ...=' cd ..; cd ..; ls'
+alias ....=' cd ..; cd ..; cd ..; ls'
+alias cd..='..'
+alias cd...='...'
+alias cd....='....'
 
 # Install antigen.zsh if not exist
 if [ ! -f "$ANTIGEN" ]; then
