@@ -8,7 +8,7 @@ alias vim="vim"
 alias nano="vim"
 
 alias ll='ls -a'
-alias rm="echo Use 'rmtrash', or the full path i.e. '/bin/rm'"
+alias rm='rmtrash'
 
 alias cd=' cd'
 alias ..=' cd ..; ls'
