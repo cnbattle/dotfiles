@@ -1,22 +1,6 @@
 # Antigen: https://github.com/zsh-users/antigen
 ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
-# Alias
-export EDITOR="vim"
-alias vi="vim"
-alias vim="vim"
-alias nano="vim"
-
-alias ll='ls -a'
-
-alias cd=' cd'
-alias ..=' cd ..; ls'
-alias ...=' cd ..; cd ..; ls'
-alias ....=' cd ..; cd ..; cd ..; ls'
-alias cd..='..'
-alias cd...='...'
-alias cd....='....'
-
 # Install antigen.zsh if not exist
 if [ ! -f "$ANTIGEN" ]; then
 	echo "Installing antigen ..."
@@ -42,13 +26,11 @@ if [ ! -f "$ANTIGEN" ]; then
 	mv "$TMPFILE" "$ANTIGEN"
 fi
 
-
 # Initialize command prompt
 export PS1="%n@%m:%~%# "
 
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
-
 
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
@@ -60,20 +42,18 @@ _INIT_SH_NOFUN=1
 # WSL (aka Bash for Windows) doesn't work well with BG_NICE
 [ -d "/mnt/c" ] && [[ "$(uname -a)" == *Microsoft* ]] && unsetopt BG_NICE
 
-
 # Initialize antigen
 source "$ANTIGEN"
-
 
 # Initialize oh-my-zsh
 antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
-# antigen bundle git
+antigen bundle git
 # antigen bundle heroku
-antigen bundle pip
-antigen bundle svn-fast-info
+# antigen bundle pip
+# antigen bundle svn-fast-info
 # antigen bundle command-not-find
 
 antigen bundle colorize
@@ -90,9 +70,8 @@ antigen bundle Vifon/deer
 antigen bundle willghatch/zsh-cdr
 # antigen bundle zsh-users/zaw
 
-# uncomment the line below to enable theme
-# antigen theme fishy
-
+# Load the theme.
+antigen theme robbyrussell
 
 # check login shell
 if [[ -o login ]]; then
@@ -165,8 +144,19 @@ bindkey '\e[1;3B' end-of-line
 
 bindkey '\ev' deer
 
+# Alias
+export EDITOR="vim"
+alias vi="vim"
+alias vim="vim"
+alias nano="vim"
 alias ll='ls -l'
-
+alias cd=' cd'
+alias ..=' cd ..; ls'
+alias ...=' cd ..; cd ..; ls'
+alias ....=' cd ..; cd ..; cd ..; ls'
+alias cd..='..'
+alias cd...='...'
+alias cd....='....'
 
 # options
 unsetopt correct_all
@@ -183,14 +173,9 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY # Don't execute immediately upon history expansion.
 
-
 # source function.sh if it exists
 [ -f "$HOME/.local/etc/function.sh" ] && . "$HOME/.local/etc/function.sh"
-
 
 # ignore complition
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*:*sh:*:' tag-order files
-
-
-
