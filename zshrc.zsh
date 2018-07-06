@@ -8,7 +8,7 @@ if [ ! -f "$ANTIGEN" ]; then
 	[ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
 	[ ! -f "$HOME/.z" ] && touch "$HOME/.z"
 	URL="http://git.io/antigen"
-	TMPFILE="/tmp/antigen.zsh"
+	TMPFILE="$HOME/antigen.zsh"
 	if [ -x "$(which curl)" ]; then
 		curl -L "$URL" -o "$TMPFILE" 
 	elif [ -x "$(which wget)" ]; then
@@ -57,8 +57,8 @@ antigen bundle git
 # antigen bundle command-not-find
 
 antigen bundle colorize
-antigen bundle github
-antigen bundle python
+# antigen bundle github
+# antigen bundle python
 antigen bundle rupa/z z.sh
 # antigen bundle z
 
