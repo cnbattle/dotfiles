@@ -158,6 +158,9 @@ alias cd..='..'
 alias cd...='...'
 alias cd....='....'
 
+# load local alias
+[ -f "$HOME/.alias" ] && source "$HOME/.alias" 
+
 # options
 unsetopt correct_all
 
