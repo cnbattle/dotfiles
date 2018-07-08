@@ -50,7 +50,7 @@ antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
-antigen bundle git
+# antigen bundle git
 # antigen bundle heroku
 # antigen bundle pip
 # antigen bundle svn-fast-info
