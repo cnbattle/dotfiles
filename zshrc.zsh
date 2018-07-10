@@ -71,7 +71,7 @@ antigen bundle willghatch/zsh-cdr
 # antigen bundle zsh-users/zaw
 
 # Load the theme.
-antigen theme robbyrussell
+# antigen theme robbyrussell
 
 # check login shell
 if [[ -o login ]]; then
