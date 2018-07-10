@@ -73,12 +73,6 @@ antigen bundle willghatch/zsh-cdr
 # Load the theme.
 # antigen theme robbyrussell
 
-# check login shell
-if [[ -o login ]]; then
-	[ -f "$HOME/.local/etc/login.sh" ] && source "$HOME/.local/etc/login.sh"
-	[ -f "$HOME/.local/etc/login.zsh" ] && source "$HOME/.local/etc/login.zsh"
-fi
-
 # syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
@@ -108,10 +102,6 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
-
-# load local config
-[ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh" 
-[ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
 
 # enable syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -159,7 +149,7 @@ alias cd...='...'
 alias cd....='....'
 
 # load local alias
-[ -f "$HOME/.alias" ] && source "$HOME/.alias" 
+[ -f "$HOME/.local/alias.zsh" ] && source "$HOME/.local/alias.zsh" 
 
 # options
 unsetopt correct_all
@@ -177,7 +167,7 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY # Don't execute immediately upon history expansion.
 
 # source function.sh if it exists
-[ -f "$HOME/.local/etc/function.sh" ] && . "$HOME/.local/etc/function.sh"
+[ -f "$HOME/.local/function.sh" ] && . "$HOME/.local/function.sh"
 
 # ignore complition
 zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
