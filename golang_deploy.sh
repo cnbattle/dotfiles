@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Check if user is root
+[ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
+
 cd $HOME
 golang_version="1.10.3"
 golang_path="go$golang_version"
