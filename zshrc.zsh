@@ -148,12 +148,11 @@ alias cd..='..'
 alias cd...='...'
 alias cd....='....'
 
+# install go dev deploy
+alias install_go='curl https://raw.githubusercontent.com/cnbattle/dotfiles/master/golang_deploy.sh|sh'
+
 # load local alias
 [ -f "$HOME/.local/alias.zsh" ] && source "$HOME/.local/alias.zsh" 
-
-# profile
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 
 # options
 unsetopt correct_all
