@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd $HOME
-golang_version="1.10.2"
+golang_version="1.10.3"
 golang_path="go$golang_version"
 golang_file_name="go$golang_version.linux-amd64.tar.gz"
 
