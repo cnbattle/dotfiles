@@ -1,5 +1,6 @@
 #!/bin/bash
 
+version="0.1"
 # 相关文件设置
 soft="$HOME/soft" # /usr/local
 goroot="$soft/go"
@@ -94,6 +95,8 @@ main(){
 		echo " 1. 安装"
 		echo
 		echo " 2. 卸载"
+		echo
+		echo "版本：$version"
 		echo
 		if [[ $local_install ]]; then
 			echo -e "$yellow 温馨提示.. 本地已安装 ..$none"
