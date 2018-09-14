@@ -48,6 +48,10 @@ install(){
 			wget $golang_down_url
 		fi
 		
+		# 判断目录是否存在
+		if [ ! -d "$goroot" ];then
+			mkdir -p $soft
+		fi
 		tar -xzvf $golang_file_name -C $soft
 		echo "export GOROOT=${goroot}" >> $profile
 		echo "export GOBIN=${gobin}" >>  $profile
