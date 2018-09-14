@@ -24,6 +24,10 @@ else
 	echo -e " 哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统:$sys_bit。 ${yellow}(-_-) ${none}" && exit 1
 fi
 
+# file path is not exist
+if [ -d "$goroot" ];then
+	local_install=true
+fi
 
 # 安装函数
 install(){
@@ -63,6 +67,7 @@ uninstall(){
 		sed -i '/GOROOT/'d $profile
 		sed -i '/GOBIN/'d $profile
 		sed -i '/GOPATH/'d $profile
+		echo -e "\n$red 卸载成功！$none\n"
 	else
 		echo -e "\n$red 未安装$none\n"
 	fi
@@ -72,36 +77,38 @@ error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
 
-# file path is not exist
-if [ -d "$goroot" ];then
-	local_install=true
-fi
-
-clear
-while :; do
-	echo
-	echo "........... Linux golang 一键安装/卸载脚本 & 支持32/62系统 .........."
-	echo
-	echo " 1. 安装"
-	echo
-	echo " 2. 卸载"
-	echo
-	if [[ $local_install ]]; then
-		echo -e "$yellow 温馨提示.. 本地已安装 ..$none"
+main(){
+	clear
+	while :; do
+	printf "
+#######################################################################
+#           Golang 一键安装/卸载脚本 & 支持32/64位Linux系统           #
+#    作者:cnbattle 脚步地址：https://github.com/cnbattle/dotfiles     #
+#######################################################################
+"
 		echo
-	fi
-	read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
-	case $choose in
-	1)
-		install
-		break
-		;;
-	2)
-		uninstall
-		break
-		;;
-	*)
-		error
-		;;
-	esac
-done
+		echo " 1. 安装"
+		echo
+		echo " 2. 卸载"
+		echo
+		if [[ $local_install ]]; then
+			echo -e "$yellow 温馨提示.. 本地已安装 ..$none"
+			echo
+		fi
+		read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
+		case $choose in
+		1)
+			install
+			break
+			;;
+		2)
+			uninstall
+			break
+			;;
+		*)
+			error
+			;;
+		esac
+	done
+}
+main
