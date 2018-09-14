@@ -1,37 +1,107 @@
 #!/bin/bash
 
-# Check if user is root
-[ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
+# 相关文件设置
+soft="$HOME/soft" # /usr/local
+goroot="$soft/go"
+gobin="$goroot/bin"
+path='$PATH'":$gobin"
+gopath="$HOME/goPath"
+profile="$HOME/.profile"
 
-cd $HOME
-read -t 30 -p "请要安装的版本号:" version
-golang_version=$version
-golang_path="go$golang_version"
-golang_file_name="go$golang_version.linux-amd64.tar.gz"
+red='\e[91m'
+green='\e[92m'
+yellow='\e[93m'
+magenta='\e[95m'
+cyan='\e[96m'
+none='\e[0m'
 
-# file is not exist
-if [ ! -f "$HOME/$golang_file_name" ];then
-	golang_down_url="https://dl.google.com/go/$golang_file_name"
-	wget $golang_down_url
+sys_bit=$(uname -m)
+if [[ $sys_bit == "i386" || $sys_bit == "i686" ]]; then
+	os_name="linux-386.tar.gz"
+elif [[ $sys_bit == "x86_64" ]]; then
+	os_name="linux-amd64.tar.gz"
+else
+	echo -e " 哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统:$sys_bit。 ${yellow}(-_-) ${none}" && exit 1
 fi
+
+
+# 安装函数
+install(){
+	cd $HOME
+
+	if [[ $local_install ]]; then
+		echo -e "$yellow 温馨提示.. 本地已安装 ..$none"
+		return
+	else
+		read -t 30 -p "请要安装的版本号:" version
+		golang_version=$version
+		golang_path="go$golang_version"
+		golang_file_name="go$golang_version.$os_name"
+
+		# file is not exist
+		if [ ! -f "$HOME/$golang_file_name" ];then
+			golang_down_url="https://dl.google.com/go/$golang_file_name"
+			wget $golang_down_url
+		fi
+		
+		tar -xzvf $golang_file_name -C $soft
+		echo "export GOROOT=${goroot}" >> $profile
+		echo "export GOBIN=${gobin}" >>  $profile
+		echo "export PATH=${path}" >>  $profile
+		echo "export GOPATH=${gopath}" >>  $profile
+		source $profile
+		echo "\n${red}安装成功!${none}\n"
+		return
+	fi
+}
+
+# 卸载函数
+uninstall(){
+	if [ -d "$goroot" ];then
+		rm -rf "$goroot"
+		sed -i "export GOROOT=${goroot}" $profile
+		sed -i '/GOROOT/'d $profile
+		sed -i '/GOBIN/'d $profile
+		sed -i '/GOPATH/'d $profile
+	else
+		echo -e "\n$red 未安装$none\n"
+	fi
+}
+
+error() {
+	echo -e "\n$red 输入错误！$none\n"
+}
 
 # file path is not exist
-if [ ! -d "/usr/local/go" ];then
-	tar -xzvf $golang_file_name -C /usr/local/
-    rm -rf $golang_file_name
-else
-	echo "installed!"
-	exit 1
+if [ -d "$goroot" ];then
+	local_install=true
 fi
 
-goroot="/usr/local/go"
-gobin="$goroot/bin"
-path="$PATH:$gobin"
-gopath="$HOME/goPath"
-
-echo "export GOROOT=${goroot}" >> /etc/profile
-echo "export GOBIN=${gobin}" >>  /etc/profile
-echo "export PATH=${path}" >>  /etc/profile
-echo "export GOPATH=${gopath}" >>  /etc/profile
-source /etc/profile
-echo "End of execution...."
+clear
+while :; do
+	echo
+	echo "........... Linux golang 一键安装/卸载脚本 & 支持32/62系统 .........."
+	echo
+	echo " 1. 安装"
+	echo
+	echo " 2. 卸载"
+	echo
+	if [[ $local_install ]]; then
+		echo -e "$yellow 温馨提示.. 本地已安装 ..$none"
+		echo
+	fi
+	read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
+	case $choose in
+	1)
+		install
+		break
+		;;
+	2)
+		uninstall
+		break
+		;;
+	*)
+		error
+		;;
+	esac
+done
