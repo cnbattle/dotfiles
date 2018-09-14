@@ -5,7 +5,7 @@ version="0.1"
 soft="$HOME/soft" # /usr/local
 goroot="$soft/go"
 gobin="$goroot/bin"
-path="$PATH:$gobin"
+path='$PATH'":$gobin"
 gopath="$HOME/goPath"
 profile="$HOME/.profile"
 
@@ -59,7 +59,7 @@ install(){
 		echo "export PATH=${path}" >>  $profile
 		echo "export GOPATH=${gopath}" >>  $profile
 		source $profile
-		echo "\n${red}安装成功!${none}\n"
+		echo -e "\n${red}安装成功!${none} \n"
 		return
 	fi
 }
