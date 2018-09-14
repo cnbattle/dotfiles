@@ -4,7 +4,8 @@
 [ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
 
 cd $HOME
-golang_version="1.10.3"
+read -t 30 -p "请要安装的版本号:" version
+golang_version=$version
 golang_path="go$golang_version"
 golang_file_name="go$golang_version.linux-amd64.tar.gz"
 
@@ -32,7 +33,5 @@ echo "export GOROOT=${goroot}" >> /etc/profile
 echo "export GOBIN=${gobin}" >>  /etc/profile
 echo "export PATH=${path}" >>  /etc/profile
 echo "export GOPATH=${gopath}" >>  /etc/profile
-
 source /etc/profile
-
 echo "End of execution...."
