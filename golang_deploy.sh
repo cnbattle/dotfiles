@@ -5,7 +5,7 @@ version="0.1"
 soft="$HOME/soft" # /usr/local
 goroot="$soft/go"
 gobin="$goroot/bin"
-path='$PATH'":$gobin"
+path="$PATH:$gobin"
 gopath="$HOME/goPath"
 profile="$HOME/.profile"
 
