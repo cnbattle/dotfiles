@@ -2,7 +2,7 @@
 
 
 ```
-curl cnabttle.com/vim|sh
+wget https://git.io/cnbattle.vim -O ~/.vimrc
 
-curl cnabttle.com/zsh|sh
+wget https://git.io/cnbattle.zsh -O ~/.zshrc
 ```
