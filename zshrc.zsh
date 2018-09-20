@@ -49,26 +49,13 @@ source "$ANTIGEN"
 antigen use oh-my-zsh
 
 # default bundles
-# visit https://github.com/unixorn/awesome-zsh-plugins
-# antigen bundle git
-# antigen bundle heroku
-# antigen bundle pip
-# antigen bundle svn-fast-info
-# antigen bundle command-not-find
-
 antigen bundle colorize
-# antigen bundle github
-# antigen bundle python
 antigen bundle rupa/z z.sh
-# antigen bundle z
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
-# antigen bundle supercrabtree/k
 antigen bundle Vifon/deer
-
 antigen bundle willghatch/zsh-cdr
-# antigen bundle zsh-users/zaw
 
 # Load the theme.
 antigen theme robbyrussell
@@ -147,6 +134,10 @@ alias ....=' cd ..; cd ..; cd ..; ls'
 alias cd..='..'
 alias cd...='...'
 alias cd....='....'
+# about proxy 
+alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1080"
+alias unsetproxy="unset ALL_PROXY"
+alias ip="curl -i http://ip.cn"
 
 # install go dev deploy
 alias install_go='curl https://raw.githubusercontent.com/cnbattle/dotfiles/master/golang_deploy.sh|sh'
