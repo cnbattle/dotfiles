@@ -139,6 +139,9 @@ alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1080"
 alias unsetproxy="unset ALL_PROXY"
 alias ip="curl -i http://ip.cn"
 
+# open file or dir or app 
+alias open="xdg-open"
+
 # install go dev deploy
 alias install_go='curl https://raw.githubusercontent.com/cnbattle/dotfiles/master/golang_deploy.sh|sh'
 
