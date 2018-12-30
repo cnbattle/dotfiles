@@ -135,9 +135,10 @@ alias cd..='..'
 alias cd...='...'
 alias cd....='....'
 # about proxy 
-alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1080"
-alias unsetproxy="unset ALL_PROXY"
-alias ip="curl -i http://ip.cn"
+alias setproxy="export http_proxy=socks5://127.0.0.1:1080 && export https_proxy=socks5://127.0.0.1:1080"
+alias unsetproxy="unset http_proxy && unset https_proxy"
+# ifconfig.me ident.me whatismyip.akamai.com myip.dnsomatic.com
+alias ip="curl -i icanhazip.com"
 
 # open file or dir or app 
 alias open="xdg-open"
