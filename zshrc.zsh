@@ -140,6 +140,9 @@ alias unsetproxy="unset http_proxy && unset https_proxy"
 # ifconfig.me ident.me whatismyip.akamai.com myip.dnsomatic.com
 alias ip="curl -i icanhazip.com"
 alias tq="curl wttr.in"
+# about golang dev
+alias setgomod="export GO111MODULE=on"
+alias unsetgomod="export GO111MODULE=off"
 
 # open file or dir or app 
 alias open="xdg-open"
