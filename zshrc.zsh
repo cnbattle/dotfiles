@@ -139,7 +139,7 @@ alias setproxy="export http_proxy=socks5://127.0.0.1:1080 && export https_proxy=
 alias unsetproxy="unset http_proxy && unset https_proxy"
 # ifconfig.me ident.me whatismyip.akamai.com myip.dnsomatic.com
 alias ip="curl -i icanhazip.com"
-alias tq="curl wttr.in"
+alias tq="curl 'wttr.in?lang=zh'"
 # about golang dev
 alias setgomod="export GO111MODULE=on"
 alias unsetgomod="export GO111MODULE=off"
