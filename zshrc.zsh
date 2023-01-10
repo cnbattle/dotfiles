@@ -7,7 +7,7 @@ if [ ! -f "$ANTIGEN" ]; then
 	[ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
 	[ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
 	[ ! -f "$HOME/.z" ] && touch "$HOME/.z"
-	URL="https://raw.fastgit.xyz/cnbattle/dotfiles/master/antigen.zsh"
+	URL="https://github.com/cnbattle/dotfiles/master/antigen.zsh"
 	TMPFILE="$HOME/antigen.zsh"
 	if [ -x "$(which curl)" ]; then
 		curl -L "$URL" -o "$TMPFILE" 
