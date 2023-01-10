@@ -3,7 +3,7 @@
 ######################################################################
 # Antigen: A simple plugin manager for zsh
  # Authors: Shrikant Sharat Kandula
- #          and Contributors <https://hub.fastgit.xyz/zsh-users/antigen/contributors>
+ #          and Contributors <https://github.com/zsh-users/antigen/contributors>
  # Homepage: http://antigen.sharats.me
  # License: MIT License <mitl.sharats.me>
 zmodload zsh/parameter
@@ -109,7 +109,7 @@ antigen () {
   echo $ref
 }
 # Usage:
-#   -antigen-bundle-short-name "https://hub.fastgit.xyz/user/repo.git[|*]" "[branch/name]"
+#   -antigen-bundle-short-name "https://github.com/user/repo.git[|*]" "[branch/name]"
 # Returns:
 #   user/repo@branch/name
 -antigen-bundle-short-name () {
@@ -203,7 +203,7 @@ antigen () {
   done
 }
 # Usage:
-#  -antigen-get-clone-dir "https://hub.fastgit.xyz/zsh-users/zsh-syntax-highlighting.git[|feature/branch]"
+#  -antigen-get-clone-dir "https://github.com/zsh-users/zsh-syntax-highlighting.git[|feature/branch]"
 # Returns:
 #  $ANTIGEN_BUNDLES/zsh-users/zsh-syntax-highlighting[-feature-branch]
 -antigen-get-clone-dir () {
@@ -277,7 +277,7 @@ antigen () {
 # and try to match against tags and heads, returning the latest matching.
 #
 # Usage
-#     -antigen-parse-branch https://hub.fastgit.xyz/user/repo.git x.y.z
+#     -antigen-parse-branch https://github.com/user/repo.git x.y.z
 #
 # Returns
 #     Branch name
@@ -433,9 +433,9 @@ antigen () {
 
   # Pre-startup initializations.
   -antigen-set-default ANTIGEN_OMZ_REPO_URL \
-    https://hub.fastgit.xyz/robbyrussell/oh-my-zsh.git
+    https://github.com/robbyrussell/oh-my-zsh.git
   -antigen-set-default ANTIGEN_PREZTO_REPO_URL \
-    https://hub.fastgit.xyz/sorin-ionescu/prezto.git
+    https://github.com/sorin-ionescu/prezto.git
   -antigen-set-default ANTIGEN_DEFAULT_REPO_URL $ANTIGEN_OMZ_REPO_URL
 
   # Default Antigen directory.
@@ -511,7 +511,7 @@ antigen () {
     # Common frameworks
     if [[ $#list == 0 ]]; then
       # dot-plugin, init and functions support (omz, prezto)
-      # Support prezto function loading. See https://hub.fastgit.xyz/zsh-users/antigen/pull/428
+      # Support prezto function loading. See https://github.com/zsh-users/antigen/pull/428
       list=(${location}*.plugin.zsh(N[1]) ${location}init.zsh(N[1]) ${location}/functions(N[1]))
     fi
 
@@ -619,7 +619,7 @@ antigen () {
             key=url
             local domain=""
             local url_path=$value
-            # Full url with protocol or ssh github url (hub.fastgit.xyz:org/repo)
+            # Full url with protocol or ssh github url (github.com:org/repo)
             if [[ "$value" =~ "://" || "$value" =~ ":" ]]; then
               if [[ "$value" =~ [@.][^/:]+[:]?[0-9]*[:/]?(.*)@?$ ]]; then
                 url_path=$match[1]
@@ -668,9 +668,9 @@ antigen () {
           $url != http://* &&
           $url != ssh://* &&
           $url != /* &&
-          $url != *hub.fastgit.xyz:*/*
+          $url != *github.com:*/*
           ]]; then
-    url="https://hub.fastgit.xyz/${url%.git}.git"
+    url="https://github.com/${url%.git}.git"
   fi
   args[url]="$url"
 
@@ -871,7 +871,7 @@ antigen-bundles () {
   # are ignored. Everything else is given to `antigen-bundle` as is, no
   # quoting rules applied.
   local line
-  setopt localoptions no_extended_glob # See https://hub.fastgit.xyz/zsh-users/antigen/issues/456
+  setopt localoptions no_extended_glob # See https://github.com/zsh-users/antigen/issues/456
   grep '^[[:space:]]*[^[:space:]#]' | while read line; do
     antigen-bundle ${=line%#*}
   done
